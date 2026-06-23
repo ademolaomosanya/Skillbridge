@@ -1,0 +1,865 @@
+@import "tailwindcss";
+
+:root {
+  --blue: #07336f;
+  --blue-soft: #25558f;
+  --white: #ffffff;
+  --ink: #080711;
+  --muted: #5d5c66;
+  --cream: #fff3dd;
+  --line: rgba(255, 255, 255, 0.2);
+  --dark-line: rgba(8, 7, 17, 0.14);
+}
+
+@theme inline {
+  --color-background: var(--cream);
+  --color-foreground: var(--ink);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+}
+
+.blue-section,
+.nav-shell,
+.footer-shell {
+  background: var(--blue);
+  color: var(--white);
+}
+
+.hero-section {
+  padding: 72px 0 98px;
+}
+
+.navbar,
+.hero-card,
+.essentials,
+.process-section,
+.testimonial-section,
+.cta-wrap,
+.faq-section,
+.footer {
+  margin: 0 auto;
+  max-width: 1120px;
+  width: calc(100% - 48px);
+}
+
+.nav-shell {
+  padding: 20px 0;
+}
+
+.navbar {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  min-height: 44px;
+}
+
+.logo {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  font-size: 0.92rem;
+}
+
+.nav-actions {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+}
+
+.button {
+  align-items: center;
+  border-radius: 10px;
+  display: inline-flex;
+  font-size: 0.92rem;
+  justify-content: center;
+  min-height: 36px;
+  padding: 0 16px;
+}
+
+.button-primary {
+  background: #1173ff;
+  color: white;
+}
+
+.button-outline,
+.button-ghost {
+  border: 1px solid var(--line);
+  color: white;
+}
+
+.button-light {
+  border: 1px solid var(--dark-line);
+  color: var(--ink);
+}
+
+.button-white {
+  background: white;
+  color: var(--ink);
+}
+
+.app-logout {
+  background: transparent;
+  cursor: pointer;
+}
+
+.button-row {
+  display: flex;
+  gap: 12px;
+}
+
+.button-row.center {
+  justify-content: center;
+}
+
+.hero-card {
+  background: #0a3a79;
+  border: 0 !important;
+  border-radius: 12px;
+  box-shadow: 0 42px 120px rgba(0, 12, 38, 0.48);
+  color: white;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 1fr);
+  margin-top: 72px;
+  outline: 0;
+  overflow: hidden;
+}
+
+.auth-page {
+  min-height: 100vh;
+  padding: 48px 24px;
+}
+
+.auth-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 440px);
+  margin: 0 auto;
+  max-width: 1120px;
+  min-height: calc(100vh - 96px);
+}
+
+.auth-brand-panel,
+.auth-card {
+  border-radius: 12px;
+}
+
+.auth-brand-panel {
+  background:
+    linear-gradient(rgba(7, 51, 111, 0.7), rgba(7, 51, 111, 0.88)),
+    url("/images/peer-learning-hero.png");
+  background-position: center;
+  background-size: cover;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 42px;
+}
+
+.auth-brand-panel h1 {
+  color: white;
+  font-size: clamp(2.7rem, 6vw, 5rem);
+  max-width: 620px;
+}
+
+.auth-brand-panel p:not(.kicker) {
+  font-size: 1.08rem;
+  line-height: 1.6;
+  max-width: 560px;
+}
+
+.auth-card {
+  align-self: center;
+  background: white;
+  box-shadow: 0 28px 80px rgba(0, 12, 38, 0.14);
+  margin-left: -48px;
+  padding: 42px;
+}
+
+.auth-card .kicker {
+  color: var(--blue);
+}
+
+.auth-card h2 {
+  font-size: 2.45rem;
+  margin-bottom: 12px;
+}
+
+.auth-card > p {
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.auth-form {
+  display: grid;
+  gap: 18px;
+  margin-top: 30px;
+}
+
+.auth-form label {
+  color: var(--ink);
+  display: grid;
+  font-size: 0.92rem;
+  font-weight: 700;
+  gap: 8px;
+}
+
+.auth-form input {
+  border: 1px solid var(--dark-line);
+  border-radius: 10px;
+  min-height: 48px;
+  padding: 0 14px;
+}
+
+.auth-form .button {
+  border: 0;
+  margin-top: 8px;
+  width: 100%;
+}
+
+.auth-switch {
+  margin: 24px 0 0;
+}
+
+.auth-switch a {
+  color: var(--blue);
+  font-weight: 800;
+}
+
+.form-status {
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.dashboard-page {
+  margin: 0 auto;
+  max-width: 1120px;
+  min-height: 68vh;
+  padding: 92px 24px 110px;
+}
+
+.dashboard-hero {
+  text-align: center;
+}
+
+.dashboard-hero .kicker {
+  color: var(--blue);
+}
+
+.dashboard-hero h1 {
+  font-size: clamp(3.5rem, 8vw, 6.2rem);
+  margin: 0 auto 20px;
+  max-width: 720px;
+}
+
+.dashboard-hero p:not(.kicker) {
+  color: var(--muted);
+  font-size: 1.08rem;
+}
+
+.dashboard-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 56px auto 0;
+  max-width: 760px;
+}
+
+.app-footer {
+  background: var(--blue);
+  color: white;
+  padding: 46px 24px 28px;
+}
+
+.app-footer-inner,
+.app-footer-bottom {
+  margin: 0 auto;
+  max-width: 1120px;
+}
+
+.app-footer-inner {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.app-footer-links,
+.app-footer-bottom div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+}
+
+.app-footer-bottom {
+  align-items: center;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  margin-top: 34px;
+  padding-top: 22px;
+}
+
+.app-footer-bottom p {
+  margin: 0;
+}
+
+.hero-copy {
+  align-self: center;
+  padding: 70px 42px;
+}
+
+.hero-copy h1 {
+  color: white;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  font-size: clamp(3.4rem, 7vw, 5.35rem);
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  line-height: 1.05;
+  margin-bottom: 26px;
+  max-width: 510px;
+}
+
+h2 {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  margin-bottom: 18px;
+}
+
+h3 {
+  font-size: 1.45rem;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.hero-copy p {
+  font-size: 1.08rem;
+  line-height: 1.55;
+  margin-bottom: 28px;
+  max-width: 520px;
+}
+
+.hero-image {
+  min-height: 560px;
+  position: relative;
+}
+
+.hero-image img {
+  object-fit: cover;
+}
+
+.kicker {
+  font-size: 0.86rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.essentials {
+  padding-top: 112px;
+  text-align: center;
+}
+
+.essentials > p:not(.kicker),
+.process-section > p,
+.testimonial-section > p,
+.faq-section > p {
+  line-height: 1.55;
+}
+
+.feature-grid {
+  display: grid;
+  gap: 26px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 72px;
+  text-align: left;
+}
+
+.feature-card {
+  background-image:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.48)),
+    url("/images/peer-learning-hero.png");
+  background-position: center;
+  background-size: cover;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  min-height: 290px;
+  overflow: hidden;
+  padding: 24px;
+  position: relative;
+}
+
+.feature-card::before {
+  content: "";
+  inset: 0;
+  opacity: 0.72;
+  position: absolute;
+}
+
+.feature-card.teal::before {
+  background: linear-gradient(135deg, #0086a5, transparent 70%);
+}
+
+.feature-card.gold::before {
+  background: linear-gradient(135deg, #b19525, transparent 65%);
+}
+
+.feature-card.slate::before {
+  background: linear-gradient(135deg, #151929, transparent 75%);
+}
+
+.feature-card.copper::before {
+  background: linear-gradient(135deg, #9a4e1e, transparent 70%);
+}
+
+.feature-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.cube-icon {
+  border: 4px solid white;
+  height: 28px;
+  margin-bottom: auto;
+  transform: rotate(30deg) skew(-8deg);
+  width: 28px;
+}
+
+.feature-card h3 {
+  color: white;
+  font-size: 1.75rem;
+  letter-spacing: -0.04em;
+  margin-top: 32px;
+}
+
+.feature-card p {
+  line-height: 1.4;
+  margin-bottom: 22px;
+}
+
+.process-section {
+  min-height: 700px;
+  padding: 96px 0 72px;
+  text-align: center;
+}
+
+.process-section .kicker,
+.testimonial-section .kicker,
+.faq-section .kicker {
+  margin-bottom: 14px;
+}
+
+.section-intro {
+  margin: 0 auto;
+  max-width: 610px;
+}
+
+.steps-grid {
+  display: grid;
+  gap: 38px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 72px 0 54px;
+}
+
+.step-card span {
+  display: block;
+  font-size: 3.1rem;
+  line-height: 1;
+  margin-bottom: 30px;
+}
+
+.step-card h3 {
+  font-size: 2rem;
+  letter-spacing: -0.04em;
+}
+
+.step-card p {
+  line-height: 1.45;
+}
+
+.text-link {
+  align-items: center;
+  display: inline-flex;
+  min-height: 36px;
+  padding: 0 4px;
+}
+
+.testimonial-section {
+  background: var(--cream);
+  max-width: none;
+  padding: 98px calc((100% - 1120px) / 2) 96px;
+  text-align: center;
+  width: 100%;
+}
+
+.testimonial-grid {
+  display: grid;
+  gap: 26px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 72px auto 0;
+  max-width: 1120px;
+  text-align: left;
+  width: calc(100% - 48px);
+}
+
+.testimonial-card {
+  border: 1px solid rgba(8, 7, 17, 0.16);
+  border-radius: 12px;
+  padding: 28px;
+}
+
+.stars {
+  font-size: 1.45rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 20px;
+}
+
+blockquote {
+  font-size: 1.08rem;
+  line-height: 1.48;
+  margin: 0 0 36px;
+}
+
+.person {
+  align-items: center;
+  display: flex;
+  gap: 14px;
+}
+
+.person span {
+  align-items: center;
+  background: #dcebf4;
+  border-radius: 50%;
+  display: flex;
+  flex-shrink: 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+  height: 42px;
+  justify-content: center;
+  width: 42px;
+}
+
+.person p {
+  margin: 3px 0 0;
+}
+
+.cta-wrap {
+  padding: 96px 0;
+}
+
+.cta-card {
+  background-image:
+    linear-gradient(rgba(90, 43, 0, 0.35), rgba(90, 43, 0, 0.56)),
+    url("/images/peer-learning-hero.png");
+  background-position: center 58%;
+  background-size: cover;
+  border-radius: 12px;
+  color: white;
+  padding: 58px 24px;
+  text-align: center;
+}
+
+.cta-card p {
+  margin-bottom: 28px;
+}
+
+.faq-section {
+  max-width: none;
+  padding: 92px 0 0;
+  text-align: center;
+  width: 100%;
+}
+
+.faq-section > h2,
+.faq-section > p,
+.faq-section > .kicker,
+.faq-list,
+.help-block,
+.footer,
+.footer-bottom {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1120px;
+  width: calc(100% - 48px);
+}
+
+.faq-list {
+  display: grid;
+  gap: 14px;
+  margin-top: 70px;
+  max-width: 670px;
+  text-align: left;
+}
+
+.faq-item {
+  border: 1px solid var(--dark-line);
+  border-radius: 12px;
+  padding: 24px 26px;
+}
+
+.faq-question {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.faq-question h3 {
+  font-size: 1.02rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.faq-question span {
+  font-size: 1.9rem;
+  line-height: 1;
+}
+
+.faq-item p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 22px 0 0;
+}
+
+.help-block {
+  padding: 72px 0 94px;
+}
+
+.help-block p {
+  margin-bottom: 28px;
+}
+
+.faq-section .button-outline {
+  border-color: var(--dark-line);
+  color: var(--ink);
+}
+
+.footer-shell {
+  padding-top: 64px;
+}
+
+.footer {
+  border: 1px solid var(--line);
+  border-radius: 12px 12px 0 0;
+  display: grid;
+  gap: 48px;
+  grid-template-columns: 1fr 180px 180px;
+  padding: 42px;
+  text-align: left;
+}
+
+.footer-contact {
+  margin-top: 34px;
+}
+
+.footer-contact strong {
+  display: block;
+  font-size: 0.86rem;
+  margin-top: 24px;
+}
+
+.footer-contact p {
+  font-size: 0.86rem;
+  margin: 8px 0 0;
+}
+
+.socials {
+  display: flex;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.footer-links {
+  display: grid;
+  gap: 20px;
+  font-weight: 700;
+}
+
+.footer-bottom {
+  align-items: center;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 0 34px;
+}
+
+.footer-bottom p {
+  font-size: 0.86rem;
+  margin: 0;
+}
+
+.legal-links {
+  display: flex;
+  gap: 28px;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 900px) {
+  .navbar,
+  .hero-card,
+  .essentials,
+  .process-section,
+  .cta-wrap,
+  .faq-section > h2,
+  .faq-section > p,
+  .faq-section > .kicker,
+  .faq-list,
+  .help-block,
+  .footer,
+  .footer-bottom {
+    width: calc(100% - 32px);
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .nav-actions .button-outline {
+    display: none;
+  }
+
+  .hero-card,
+  .feature-grid,
+  .steps-grid,
+  .testimonial-grid,
+  .footer {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-copy {
+    padding: 48px 28px;
+  }
+
+  .hero-image {
+    min-height: 360px;
+  }
+
+  .feature-grid,
+  .testimonial-grid {
+    margin-top: 42px;
+  }
+
+  .testimonial-section {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .footer-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+  }
+
+  .app-footer-inner,
+  .app-footer-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .auth-shell {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .auth-brand-panel {
+    min-height: 420px;
+  }
+
+  .auth-card {
+    margin: -40px 16px 0;
+  }
+
+  .legal-links {
+    flex-wrap: wrap;
+    gap: 14px 22px;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero-section {
+    padding-top: 14px;
+  }
+
+  .hero-card {
+    margin-top: 40px;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  .hero-image {
+    min-height: 300px;
+  }
+
+  .essentials,
+  .process-section,
+  .testimonial-section,
+  .cta-wrap,
+  .faq-section {
+    padding-top: 72px;
+  }
+
+  .auth-page {
+    padding: 16px;
+  }
+
+  .auth-brand-panel,
+  .auth-card {
+    padding: 28px;
+  }
+
+  .auth-card {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
