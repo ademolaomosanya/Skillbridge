@@ -8,6 +8,7 @@ type TeacherCardProps = {
   bio: string;
   hourlyRate: number;
   rating: number;
+  skills?: string[];
 };
 
 export function TeacherCard({
@@ -17,18 +18,28 @@ export function TeacherCard({
   bio,
   hourlyRate,
   rating,
+  skills = [],
 }: TeacherCardProps) {
   return (
-    <Card>
-      <p className="text-sm font-semibold text-blue-700">{title}</p>
-      <h3 className="mt-2 text-2xl font-semibold">{name}</h3>
-      <p className="mt-3 text-sm leading-6 text-slate-600">{bio}</p>
-      <div className="mt-5 flex items-center justify-between text-sm">
+    <Card className="teacher-card">
+      <div className="teacher-card-top">
+        <span>{name.split(" ").map((part) => part[0]).join("")}</span>
+        <em>{rating.toFixed(2)}</em>
+      </div>
+      <p className="teacher-title">{title}</p>
+      <h3>{name}</h3>
+      <p className="teacher-bio">{bio}</p>
+      <div className="teacher-skills">
+        {skills.slice(0, 3).map((skill) => (
+          <span key={skill}>{skill}</span>
+        ))}
+      </div>
+      <div className="teacher-meta">
         <span>{rating.toFixed(2)} rating</span>
         <strong>${hourlyRate}/hr</strong>
       </div>
       <Link
-        className="mt-5 inline-flex rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white"
+        className="teacher-card-link"
         href={`/teachers/${id}`}
       >
         View profile

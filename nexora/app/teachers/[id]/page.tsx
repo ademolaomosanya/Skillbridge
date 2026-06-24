@@ -1,6 +1,6 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BookingForm } from "@/components/BookingForm";
-import { Card } from "@/components/ui/card";
 import { experts } from "@/lib/data";
 
 type TeacherProfilePageProps = {
@@ -15,32 +15,129 @@ export default async function TeacherProfilePage({ params }: TeacherProfilePageP
     notFound();
   }
 
+  const initials = teacher.name
+    .split(" ")
+    .map((part) => part[0])
+    .join("");
+
   return (
-    <main className="mx-auto grid max-w-6xl gap-8 px-6 py-16 lg:grid-cols-[1fr_380px]">
-      <section>
-        <p className="text-sm font-semibold uppercase tracking-wide text-blue-700">
-          Teacher profile
-        </p>
-        <h1 className="mt-3 text-5xl font-semibold">{teacher.name}</h1>
-        <p className="mt-3 text-xl text-slate-700">{teacher.title}</p>
-        <p className="mt-6 max-w-2xl leading-7 text-slate-600">{teacher.bio}</p>
-        <div className="mt-8 flex flex-wrap gap-3">
-          {teacher.skills.map((skill) => (
-            <span className="rounded-full bg-white px-4 py-2 text-sm" key={skill}>
-              {skill}
-            </span>
-          ))}
+    <main className="teacher-profile-page">
+      <section className="teacher-profile-hero">
+        <div className="teacher-profile-avatar">{initials}</div>
+        <div>
+          <p className="kicker">Teacher profile</p>
+          <h1>{teacher.name}</h1>
+          <p className="teacher-profile-title">{teacher.title}</p>
+          <p className="teacher-profile-bio">{teacher.bio}</p>
+          <div className="teacher-profile-tags">
+            {teacher.skills.map((skill) => (
+              <span key={skill}>{skill}</span>
+            ))}
+          </div>
         </div>
       </section>
-      <Card>
-        <h2 className="text-2xl font-semibold">Book a session</h2>
-        <p className="mt-2 text-sm text-slate-600">
-          ${teacher.hourlyRate}/hr · {teacher.rating.toFixed(2)} rating
-        </p>
-        <div className="mt-6">
-          <BookingForm teacherId={teacher.id} />
+
+      <section className="teacher-profile-stats" aria-label="Teacher stats">
+        <article>
+          <span>Rating</span>
+          <strong>{teacher.rating.toFixed(2)}</strong>
+        </article>
+        <article>
+          <span>Sessions taught</span>
+          <strong>{teacher.sessionsTaught}+</strong>
+        </article>
+        <article>
+          <span>Rate</span>
+          <strong>${teacher.hourlyRate}/hr</strong>
+        </article>
+        <article>
+          <span>Response</span>
+          <strong>{teacher.responseTime}</strong>
+        </article>
+      </section>
+
+      <section className="teacher-profile-layout">
+        <div className="teacher-profile-main">
+          <article className="profile-panel">
+            <h2>About {teacher.name.split(" ")[0]}</h2>
+            <p>{teacher.about}</p>
+            <div className="profile-detail-grid">
+              <div>
+                <span>Location</span>
+                <strong>{teacher.location}</strong>
+              </div>
+              <div>
+                <span>Languages</span>
+                <strong>{teacher.languages.join(", ")}</strong>
+              </div>
+              <div>
+                <span>Session formats</span>
+                <strong>{teacher.format.join(", ")}</strong>
+              </div>
+            </div>
+          </article>
+
+          <article className="profile-panel">
+            <h2>What you can learn</h2>
+            <div className="profile-list-grid">
+              {teacher.outcomes.map((item) => (
+                <div key={item}>{item}</div>
+              ))}
+            </div>
+          </article>
+
+          <article className="profile-panel">
+            <h2>Teaching style</h2>
+            <div className="profile-chip-row">
+              {teacher.teachingStyle.map((style) => (
+                <span key={style}>{style}</span>
+              ))}
+            </div>
+          </article>
+
+          <article className="profile-panel">
+            <h2>Experience</h2>
+            <ul className="profile-check-list">
+              {teacher.experience.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </article>
+
+          <article className="profile-panel">
+            <h2>Learner reviews</h2>
+            <div className="profile-review-grid">
+              {teacher.reviews.map((review) => (
+                <blockquote key={review.name}>
+                  <p>&quot;{review.quote}&quot;</p>
+                  <cite>{review.name}</cite>
+                </blockquote>
+              ))}
+            </div>
+          </article>
         </div>
-      </Card>
+
+        <aside className="teacher-booking-panel">
+          <div className="booking-price">
+            <span>Starting at</span>
+            <strong>${teacher.hourlyRate}/hr</strong>
+          </div>
+          <div className="availability-list">
+            <h2>Availability</h2>
+            {teacher.availability.map((item) => (
+              <span key={item}>{item}</span>
+            ))}
+          </div>
+          <div className="booking-form-wrap">
+            <h2>Book a session</h2>
+            <p>Send a session request and confirm the topic you want to work on.</p>
+            <BookingForm teacherId={teacher.id} />
+          </div>
+          <Link className="teacher-back-link" href="/teachers">
+            Back to all teachers
+          </Link>
+        </aside>
+      </section>
     </main>
   );
 }

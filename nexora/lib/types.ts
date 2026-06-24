@@ -9,6 +9,19 @@ export type Expert = {
   hourlyRate: number;
   format: SessionFormat[];
   bio: string;
+  about: string;
+  location: string;
+  languages: string[];
+  sessionsTaught: number;
+  responseTime: string;
+  availability: string[];
+  teachingStyle: string[];
+  outcomes: string[];
+  experience: string[];
+  reviews: Array<{
+    name: string;
+    quote: string;
+  }>;
 };
 
 export type Roadmap = {

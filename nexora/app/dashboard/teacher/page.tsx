@@ -1,11 +1,7 @@
-import { AppFooter } from "@/components/AppFooter";
-import { AppHeader } from "@/components/AppHeader";
 import { Card } from "@/components/ui/card";
 
 export default function TeacherDashboardPage() {
   return (
-    <>
-      <AppHeader />
       <main className="dashboard-page">
         <section className="dashboard-hero">
           <p className="kicker">Teacher dashboard</p>
@@ -27,7 +23,5 @@ export default function TeacherDashboardPage() {
           </Card>
         </section>
       </main>
-      <AppFooter />
-    </>
   );
 }

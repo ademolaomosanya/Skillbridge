@@ -15,7 +15,7 @@ export function BookingForm({ teacherId }: { teacherId?: string }) {
     const formData = new FormData(event.currentTarget);
     const payload = {
       teacherId: teacherId ?? String(formData.get("teacherId")),
-      learnerId: String(formData.get("learnerId")),
+      learnerId: teacherId ? "demo-learner" : String(formData.get("learnerId")),
       topic: String(formData.get("topic")),
       startsAt: String(formData.get("startsAt")),
     };
@@ -32,7 +32,7 @@ export function BookingForm({ teacherId }: { teacherId?: string }) {
   return (
     <form className="grid gap-4" onSubmit={handleSubmit}>
       {!teacherId && <Input name="teacherId" placeholder="Teacher ID" required />}
-      <Input name="learnerId" placeholder="Learner user ID" required />
+      {!teacherId && <Input name="learnerId" placeholder="Learner user ID" required />}
       <Input name="topic" placeholder="Session topic" required />
       <Input name="startsAt" type="datetime-local" required />
       <Button type="submit">Book session</Button>

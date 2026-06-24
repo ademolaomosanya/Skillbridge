@@ -1,20 +1,62 @@
 import { TeacherCard } from "@/components/TeacherCard";
 import { experts } from "@/lib/data";
 
-export default function TeachersPage() {
+type TeachersPageProps = {
+  searchParams?: Promise<{
+    filter?: string;
+  }>;
+};
+
+export default async function TeachersPage({ searchParams }: TeachersPageProps) {
+  const params = await searchParams;
+  const filter = params?.filter ?? "";
+
+  const filteredExperts = experts.filter((expert) => {
+    const matchesQuickFilter =
+      filter === "top-rated"
+        ? expert.rating >= 4.9
+        : filter === "available-this-week"
+          ? expert.availability.some((item) => item.includes("Weekday") || item.includes("Saturday"))
+          : filter === "under-50"
+            ? expert.hourlyRate < 50
+            : true;
+
+    return matchesQuickFilter;
+  });
+
   return (
-    <main className="mx-auto max-w-6xl px-6 py-16">
-      <div className="max-w-2xl">
-        <p className="text-sm font-semibold uppercase tracking-wide text-blue-700">
-          Teachers
-        </p>
-        <h1 className="mt-3 text-4xl font-semibold">Browse verified teachers</h1>
-        <p className="mt-4 text-slate-600">
-          This page is ready to swap from seed data to <code>GET /api/teachers</code>.
-        </p>
+    <main className="teachers-page">
+      <section className="teachers-hero">
+        <div>
+          <p className="kicker">Teachers</p>
+          <h1>Browse verified teachers</h1>
+          <p>
+            Explore {experts.length} practitioners across engineering, design,
+            marketing, product, cloud, data, and security.
+          </p>
+        </div>
+      </section>
+
+      <div className="teacher-toolbar">
+        <div>
+          <a className={filter === "top-rated" ? "active" : ""} href="/teachers?filter=top-rated">
+            Top rated
+          </a>
+          <a
+            className={filter === "available-this-week" ? "active" : ""}
+            href="/teachers?filter=available-this-week"
+          >
+            Available this week
+          </a>
+          <a className={filter === "under-50" ? "active" : ""} href="/teachers?filter=under-50">
+            Under $50/hr
+          </a>
+          {filter && <a href="/teachers">Clear filter</a>}
+        </div>
       </div>
-      <div className="mt-10 grid gap-6 md:grid-cols-3">
-        {experts.map((expert) => (
+
+      <section className="teachers-grid">
+        {filteredExperts.map((expert) => (
           <TeacherCard
             bio={expert.bio}
             hourlyRate={expert.hourlyRate}
@@ -22,10 +64,11 @@ export default function TeachersPage() {
             key={expert.id}
             name={expert.name}
             rating={expert.rating}
+            skills={expert.skills}
             title={expert.title}
           />
         ))}
-      </div>
+      </section>
     </main>
   );
 }

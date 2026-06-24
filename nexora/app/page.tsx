@@ -97,28 +97,6 @@ const faqs = [
 export default function Home() {
   return (
     <main>
-      <header className="nav-shell">
-        <nav className="navbar" aria-label="Primary navigation">
-          <a className="logo" href="#">
-            Nexora
-          </a>
-          <div className="nav-links">
-            <a href="#experts">Experts</a>
-            <a href="#roadmaps">Roadmaps</a>
-            <a href="#bookings">Bookings</a>
-            <a href="#faq">Learn more⌄</a>
-          </div>
-          <div className="nav-actions">
-            <a className="button button-outline" href="/auth/sign-in">
-              Sign in
-            </a>
-            <a className="button button-primary" href="/auth/sign-up">
-              Start
-            </a>
-          </div>
-        </nav>
-      </header>
-
       <section className="hero-section">
         <div className="hero-card">
           <div className="hero-copy">
@@ -254,51 +232,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="footer-shell">
-        <footer className="footer">
-          <div>
-            <a className="logo" href="#">
-              Nexora
-            </a>
-            <div className="footer-contact">
-              <strong>Address</strong>
-              <p>Sydney, NSW 2000, Australia</p>
-              <strong>Contact</strong>
-              <p>1800 555 888 hello@learningexchange.com</p>
-            </div>
-            <div className="socials" aria-label="Social links">
-              <span>f</span>
-              <span>◎</span>
-              <span>𝕏</span>
-              <span>in</span>
-              <span>▶</span>
-            </div>
-          </div>
-          <div className="footer-links">
-            <a href="#">Home</a>
-            <a href="#experts">Experts</a>
-            <a href="#roadmaps">Skill roadmaps</a>
-            <a href="#bookings">Bookings</a>
-            <a href="#">About us</a>
-          </div>
-          <div className="footer-links">
-            <a href="#">Support</a>
-            <a href="#">Community</a>
-            <a href="#">Resources</a>
-            <a href="#">Blog</a>
-            <a href="#">Contact us</a>
-          </div>
-        </footer>
-
-        <div className="footer-bottom">
-          <p>© 2025 Learning Exchange Platform. All rights reserved.</p>
-          <div className="legal-links">
-            <a href="#">Privacy policy</a>
-            <a href="#">Terms of service</a>
-            <a href="#">Cookies settings</a>
-          </div>
-        </div>
-      </section>
     </main>
   );
 }
