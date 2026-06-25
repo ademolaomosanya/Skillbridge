@@ -8,6 +8,7 @@ type TeacherCardProps = {
   bio: string;
   hourlyRate: number;
   rating: number;
+  avatarUrl: string;
   skills?: string[];
 };
 
@@ -18,12 +19,13 @@ export function TeacherCard({
   bio,
   hourlyRate,
   rating,
+  avatarUrl,
   skills = [],
 }: TeacherCardProps) {
   return (
     <Card className="teacher-card">
       <div className="teacher-card-top">
-        <span>{name.split(" ").map((part) => part[0]).join("")}</span>
+        <img src={avatarUrl} alt={`${name} profile photo`} />
         <em>{rating.toFixed(2)}</em>
       </div>
       <p className="teacher-title">{title}</p>

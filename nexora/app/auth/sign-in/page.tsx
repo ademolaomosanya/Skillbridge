@@ -14,7 +14,7 @@ export default function SignInPage() {
             <h1>Continue your learning journey.</h1>
             <p>
               Sign in to manage bookings, follow your roadmap, and connect with
-              teachers who can help you move faster.
+              mentors who can help you move faster.
             </p>
           </div>
         </div>

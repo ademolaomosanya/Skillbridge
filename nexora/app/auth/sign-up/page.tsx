@@ -22,7 +22,7 @@ export default function SignUpPage() {
         <section className="auth-card" aria-labelledby="sign-up-title">
           <p className="kicker">Create account</p>
           <h2 id="sign-up-title">Get started with Nexora</h2>
-          <p>Choose learner or teacher later from your dashboard.</p>
+          <p>Choose whether you are here to learn or mentor others.</p>
 
           <SignUpForm />
 

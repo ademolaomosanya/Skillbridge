@@ -20,6 +20,7 @@ export function SignUpForm() {
         name: String(formData.get("name")),
         email: String(formData.get("email")),
         password: String(formData.get("password")),
+        role: String(formData.get("role")),
       }),
     });
 
@@ -28,8 +29,20 @@ export function SignUpForm() {
       return;
     }
 
-    setStatus("Account created. Redirecting to sign in...");
-    router.push("/auth/sign-in");
+    const result = await signIn("credentials", {
+      email: String(formData.get("email")),
+      password: String(formData.get("password")),
+      redirect: false,
+    });
+
+    if (result?.error) {
+      setStatus("Account created. Sign in to continue.");
+      router.push("/auth/sign-in");
+      return;
+    }
+
+    const role = String(formData.get("role"));
+    router.push(role === "TEACHER" ? "/onboarding/mentor" : "/onboarding/learner");
   }
 
   return (
@@ -52,6 +65,23 @@ export function SignUpForm() {
           type="password"
         />
       </label>
+      <fieldset className="role-choice">
+        <legend>I want to join as</legend>
+        <label>
+          <input defaultChecked name="role" type="radio" value="LEARNER" />
+          <span>
+            <strong>Learner</strong>
+            <small>Find mentors, follow roadmaps, and book sessions.</small>
+          </span>
+        </label>
+        <label>
+          <input name="role" type="radio" value="TEACHER" />
+          <span>
+            <strong>Mentor</strong>
+            <small>Share your expertise and manage learner bookings.</small>
+          </span>
+        </label>
+      </fieldset>
       <button className="button button-primary" type="submit">
         Sign up
       </button>
@@ -80,7 +110,16 @@ export function SignInForm() {
       return;
     }
 
-    router.push("/dashboard");
+    const sessionResponse = await fetch("/api/auth/session");
+    const session = (await sessionResponse.json()) as {
+      user?: { role?: "LEARNER" | "TEACHER" | "ADMIN" };
+    };
+
+    router.push(
+      session.user?.role === "TEACHER"
+        ? "/dashboard/teacher"
+        : "/dashboard",
+    );
     router.refresh();
   }
 

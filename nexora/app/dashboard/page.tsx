@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import { auth } from "@/lib/auth";
 import { experts, roadmaps } from "@/lib/data";
 
 const nextSession = {
@@ -14,7 +16,13 @@ const activities = [
   "Booked a frontend architecture session",
 ];
 
-export default function DashboardPage() {
+export default async function DashboardPage() {
+  const session = await auth();
+
+  if (session?.user?.role === "TEACHER") {
+    redirect("/dashboard/teacher");
+  }
+
   const roadmap = roadmaps[0];
   const completedSteps = 3;
   const progress = Math.round((completedSteps / roadmap.steps.length) * 100);
@@ -32,7 +40,7 @@ export default function DashboardPage() {
           </div>
           <div className="learner-hero-actions">
             <Link className="button button-primary" href="/teachers">
-              Find a teacher
+              Find a mentor
             </Link>
             <Link className="button button-light" href="/bookings/new">
               Book session
@@ -90,7 +98,7 @@ export default function DashboardPage() {
                   View booking
                 </Link>
                 <Link className="button button-light" href="/teachers/maya-chen">
-                  Teacher profile
+                  Mentor profile
                 </Link>
               </div>
             </article>
@@ -131,7 +139,7 @@ export default function DashboardPage() {
               <div className="mini-teacher-list">
                 {experts.slice(0, 5).map((expert) => (
                   <Link href={`/teachers/${expert.id}`} key={expert.id}>
-                    <span>{expert.name.split(" ").map((part) => part[0]).join("")}</span>
+                    <img src={expert.avatarUrl} alt={`${expert.name} profile photo`} />
                     <div>
                       <strong>{expert.name}</strong>
                       <p>{expert.skills.slice(0, 2).join(" · ")}</p>

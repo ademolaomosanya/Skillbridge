@@ -28,8 +28,8 @@ export default async function TeachersPage({ searchParams }: TeachersPageProps) 
     <main className="teachers-page">
       <section className="teachers-hero">
         <div>
-          <p className="kicker">Teachers</p>
-          <h1>Browse verified teachers</h1>
+          <p className="kicker">Mentors</p>
+          <h1>Browse verified mentors</h1>
           <p>
             Explore {experts.length} practitioners across engineering, design,
             marketing, product, cloud, data, and security.
@@ -59,6 +59,7 @@ export default async function TeachersPage({ searchParams }: TeachersPageProps) 
         {filteredExperts.map((expert) => (
           <TeacherCard
             bio={expert.bio}
+            avatarUrl={expert.avatarUrl}
             hourlyRate={expert.hourlyRate}
             id={expert.id}
             key={expert.id}

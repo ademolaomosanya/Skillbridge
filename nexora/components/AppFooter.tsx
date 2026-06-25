@@ -8,7 +8,7 @@ export function AppFooter() {
           Nexora
         </Link>
         <div className="app-footer-links">
-          <Link href="/teachers">Teachers</Link>
+          <Link href="/teachers">Mentors</Link>
           <Link href="/bookings/new">Bookings</Link>
           <Link href="/dashboard">Dashboard</Link>
           <Link href="/auth/sign-in">Sign in</Link>

@@ -9,6 +9,7 @@ export type Expert = {
   hourlyRate: number;
   format: SessionFormat[];
   bio: string;
+  avatarUrl: string;
   about: string;
   location: string;
   languages: string[];

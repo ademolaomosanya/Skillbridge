@@ -89,6 +89,7 @@ function makeExpert(index: number): Expert {
     hourlyRate: 28 + (index % 9) * 5,
     format,
     bio: `Practical ${skills[0]} mentor helping learners build confidence through live sessions and focused feedback.`,
+    avatarUrl: `https://i.pravatar.cc/320?img=${(index % 70) + 1}`,
     about: `${name} is a hands-on ${title.toLowerCase()} who teaches through practical examples, thoughtful feedback, and live problem solving. Sessions are structured around your current level, the outcome you want, and the gaps that are slowing you down.`,
     location: locations[index % locations.length],
     languages: index % 4 === 0 ? ["English", "French"] : ["English"],

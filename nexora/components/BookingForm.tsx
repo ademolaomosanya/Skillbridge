@@ -31,7 +31,7 @@ export function BookingForm({ teacherId }: { teacherId?: string }) {
 
   return (
     <form className="grid gap-4" onSubmit={handleSubmit}>
-      {!teacherId && <Input name="teacherId" placeholder="Teacher ID" required />}
+      {!teacherId && <Input name="teacherId" placeholder="Mentor ID" required />}
       {!teacherId && <Input name="learnerId" placeholder="Learner user ID" required />}
       <Input name="topic" placeholder="Session topic" required />
       <Input name="startsAt" type="datetime-local" required />

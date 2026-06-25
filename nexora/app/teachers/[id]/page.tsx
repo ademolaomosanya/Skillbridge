@@ -15,17 +15,16 @@ export default async function TeacherProfilePage({ params }: TeacherProfilePageP
     notFound();
   }
 
-  const initials = teacher.name
-    .split(" ")
-    .map((part) => part[0])
-    .join("");
-
   return (
     <main className="teacher-profile-page">
       <section className="teacher-profile-hero">
-        <div className="teacher-profile-avatar">{initials}</div>
+        <img
+          className="teacher-profile-avatar"
+          src={teacher.avatarUrl}
+          alt={`${teacher.name} profile photo`}
+        />
         <div>
-          <p className="kicker">Teacher profile</p>
+          <p className="kicker">Mentor profile</p>
           <h1>{teacher.name}</h1>
           <p className="teacher-profile-title">{teacher.title}</p>
           <p className="teacher-profile-bio">{teacher.bio}</p>
@@ -134,7 +133,7 @@ export default async function TeacherProfilePage({ params }: TeacherProfilePageP
             <BookingForm teacherId={teacher.id} />
           </div>
           <Link className="teacher-back-link" href="/teachers">
-            Back to all teachers
+            Back to all mentors
           </Link>
         </aside>
       </section>

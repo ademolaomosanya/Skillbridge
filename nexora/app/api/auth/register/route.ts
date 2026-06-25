@@ -19,13 +19,14 @@ export async function POST(request: NextRequest) {
 
   const email = body.email.toLowerCase();
   const passwordHash = await hash(body.password, 12);
+  const role = body.role === "TEACHER" ? "TEACHER" : "LEARNER";
 
   const user = await prisma.user.create({
     data: {
       name: body.name,
       email,
       passwordHash,
-      role: body.role ?? "LEARNER",
+      role,
     },
     select: {
       id: true,

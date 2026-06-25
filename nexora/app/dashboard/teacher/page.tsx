@@ -1,11 +1,19 @@
+import { redirect } from "next/navigation";
+import { auth } from "@/lib/auth";
 import { Card } from "@/components/ui/card";
 
-export default function TeacherDashboardPage() {
+export default async function TeacherDashboardPage() {
+  const session = await auth();
+
+  if (session?.user?.role === "LEARNER") {
+    redirect("/dashboard");
+  }
+
   return (
       <main className="dashboard-page">
         <section className="dashboard-hero">
-          <p className="kicker">Teacher dashboard</p>
-          <h1>Teacher dashboard</h1>
+          <p className="kicker">Mentor dashboard</p>
+          <h1>Mentor dashboard</h1>
           <p>Manage bookings, earnings, and your teaching profile.</p>
         </section>
         <section className="dashboard-grid">

@@ -15,7 +15,7 @@ const features = [
   },
   {
     title: "Pay securely without the friction",
-    body: "Simple transactions that protect both you and your teacher",
+    body: "Simple transactions that protect both you and your mentor",
     action: "Pay",
     tone: "slate",
   },
@@ -129,7 +129,7 @@ export default function Home() {
         <section className="essentials" id="experts">
           <p className="kicker">Essentials</p>
           <h2>What makes it work</h2>
-          <p>Find the teachers worth your time and attention</p>
+          <p>Find the mentors worth your time and attention</p>
 
           <div className="feature-grid">
             {features.map((feature) => (
